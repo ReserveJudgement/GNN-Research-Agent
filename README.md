@@ -28,5 +28,4 @@ The dataset can be downloaded from: https://codex.flywire.ai/
 
 The agent does not have to deal with downloading the dataset or the packages, these are prepared in advance.
 
-Basic code for loading and exploring the dataset can be found in dataset.py
-
+Example code for analyzing the dataset can be found at: https://github.com/alitwinkumar/connectome_examples
