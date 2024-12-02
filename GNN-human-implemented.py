@@ -95,7 +95,7 @@ def eval_link_predictor(model, data):
 
 
 if __name__ == '__main__':
-    data_path = "data/flywire"
+    data_path = "data/"
     neurons, J, J_nts = load_flywire(data_path, by_nts=True, include_spatial=False)
 
     # Import FlyWire connections as an edgelist
