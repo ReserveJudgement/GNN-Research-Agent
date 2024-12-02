@@ -10,8 +10,7 @@ The agent loop:
 
 - The agent is prompted with the dataset description and the task, and asked to generate code.
 - The code is run. If there are errors, they are fed back to the agent together with its generated code, with a prompt to fix the code. Three errors in a row exits the process.
-- If the code runs without errors, the evaluation of the resulting GNN is returned to the agent, with a prompt to update the code in order to improve results. Three trained GNNs exits the process.
-- If at least one GNN is successfully trained, the agent is prompted to write a summary report.
+- If the code runs without errors, the evaluation of the resulting GNN is returned to the agent, with a prompt to write a summary report.
 
 Agent process can be found in LLM-researcher.py
 
@@ -25,8 +24,7 @@ PyG: https://pytorch-geometric.readthedocs.io/en/latest/
 Working example code can be found in GNN.py
 
 ## Flywire data
-The dataset is preloaded for the agent.
-It can be downloaded from: https://codex.flywire.ai/
+The dataset can be downloaded from: https://codex.flywire.ai/
 
-Basic code can be found in dataload.py
+Basic code for loading and exploring the dataset can be found in dataset.py
 
