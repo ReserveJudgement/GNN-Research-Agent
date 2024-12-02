@@ -1,3 +1,6 @@
+![bgd6](https://github.com/user-attachments/assets/d6cd6fd0-b43e-4e8a-ac94-0ac2cac36347)
+
+
 ## GNN-Research-Agent
 Experiment using an LLM agent as an autonomous research assistant to analyze neurological data in graph format.
 The dataset being analyzed is "flywire", the connectome of an adult female fly, as described in: 
@@ -24,7 +27,7 @@ NetworkX: https://networkx.org/
 
 PyG: https://pytorch-geometric.readthedocs.io/en/latest/
 
-Working example code can be found in GNN.py
+Working human-made baseline code can be found in GNN-human-implemented.py
 
 ## Flywire data
 The dataset can be downloaded from: https://codex.flywire.ai/
@@ -34,3 +37,32 @@ The agent does not have to deal with downloading the dataset or the packages, th
 Connectome tools package is required for loading the data: https://github.com/alitwinkumar/connectome_tools
 
 Example code for analyzing the dataset can be found at: https://github.com/alitwinkumar/connectome_examples
+
+## Results
+Gemini manages to produce working code on the third trial.
+
+The produced code can be found in gemini/LLM-code.txt
+
+The results of the trained model can be found in gemini/results.csv
+
+Outcomes are not good. Compare:
+
+Human implemented model performance:
+
+![human_losses](https://github.com/user-attachments/assets/3454a1ae-f903-4fa5-87b0-55b25a91553d)
+
+Gemini implemented model performance:
+
+![gemini_losses1](https://github.com/user-attachments/assets/ae85785f-750a-4bb7-ad78-2ce385c90fd5)
+
+
+The model's summary report can be found in gemini/report.txt
+
+The model correctly concludes that "The training process revealed significant instability and poor performance". It makes recommendations for improvement.
+
+## Next steps
+
+- Expand the agent cycle to improve on performance, not just code errors
+- Try additional models
+
+
