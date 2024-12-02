@@ -63,6 +63,7 @@ The model correctly concludes that "The training process revealed significant in
 ## Next steps
 
 - Expand the agent cycle to improve on performance, not just code errors
-- Try additional models
+- Evaluate additional models
+- Add further tasks
 
 
