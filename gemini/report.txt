@@ -1,0 +1,38 @@
+This report summarizes the results of training a Graph Neural Network (GNN) to predict connections between neurons in the left lateral horn (LH_L) of the Drosophila melanogaster brain.  The LH_L is a region implicated in innate odor behavior, and predicting connectivity within this region is crucial for understanding its functional organization.
+
+**Methodology:**
+
+A GNN was implemented using the PyTorch Geometric library, leveraging Graph Convolutional layers (GCNConv). The input graph was constructed using connection data from the `connections.csv` file, filtered to include only connections within the LH_L neuropil.  Node features consisted of a one-hot encoding of neuron cell types (although only one cell type, 'typeA', was present in the placeholder neuron data – this needs to be replaced with real data for meaningful results), and edge features represented synaptic connection strength (synaptic count).
+
+A train-test split (80/20) was performed on the edges. The model was trained for 100 epochs using the Binary Cross-Entropy loss function (BCELoss) and the Adam optimizer.  At each epoch, the training loss and the Area Under the ROC Curve (AUC) score on the test set were recorded.  The trained model was saved as 'trained-GNN.pt', and the evaluation results were saved in 'results.csv'.
+
+**Results:**
+
+The training process revealed significant instability and poor performance. The loss values fluctuated wildly between very small and very large numbers throughout the epochs, as seen in the provided data. This high variance suggests a problem with the training process, rather than inherent limitations in the model.  The AUC scores, which ranged from approximately 0.49 to 0.51, also indicate poor performance.  An AUC of 0.5 represents random guessing; the obtained results are only marginally better than chance.
+
+**Discussion:**
+
+The poor performance is primarily attributable to several factors:
+
+1. **Placeholder Neuron Data:** The most critical issue is the use of placeholder neuron data. The model only had access to a single cell type ("typeA") for all neurons, making it impossible to learn any meaningful relationship between node features and edge existence.  This needs to be corrected by integrating real neuron cell type data.
+
+2. **Random Edge Labels:** The code generated random edge labels (`edge_label = torch.randint(0, 2,(data.num_edges,)).float()`) rather than using actual connection information for supervised learning. This essentially trained the model on random noise, hence the poor results. The `edge_label` needs to be derived from the actual presence or absence of connections in the `lh_l_connections` DataFrame.  One strategy would be to assign 1 to existing edges and 0 to edges which are absent in the data, but which could theoretically be present.  This generates a link prediction problem.
+
+3. **Inappropriate use of a linear layer**: The linear layer is added after the GCN layers.  The GCN is designed to learn latent embeddings that capture the graph structure. This information is lost when the node embeddings are concatenated and passed through the linear layer.  The output should be derived directly from the node embeddings to learn relations from the graph structure itself. 
+
+4. **Potential for Overfitting:** While not evident from these results (due to points 1 and 2), with real data and proper edge labels, the model's complexity (two GCN layers) might lead to overfitting.  Careful hyperparameter tuning and regularization techniques (e.g., dropout, weight decay) would be necessary.
+
+
+**Recommendations:**
+
+To improve the performance of the GNN, the following steps are crucial:
+
+1. **Replace Placeholder Data:** Integrate the actual neuron data with diverse cell types and associated attributes.
+2. **Correct Edge Labels:**  Generate proper binary edge labels representing the presence (1) or absence (0) of connections between neurons based on the connectivity data.
+3. **Remove Linear Layer**:   Directly output predictions based on the node embeddings provided by the GCNs.
+4. **Hyperparameter Tuning:** Experiment with different numbers of GCN layers, hidden units, learning rates, and regularization techniques to optimize performance.
+5. **Data Preprocessing:** Consider additional data preprocessing steps (e.g., normalization of synaptic counts).
+
+
+By addressing these limitations, a more robust and effective GNN for predicting neuronal connections in the Drosophila LH_L neuropil can be developed.  The current results are not representative of the GNN's potential due to fundamental flaws in the data and training setup.
+
