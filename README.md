@@ -13,13 +13,19 @@ The agent loop:
 - If the code runs without errors, the evaluation of the resulting GNN is returned to the agent, with a prompt to update the code in order to improve results. Three trained GNNs exits the process.
 - If at least one GNN is successfully trained, the agent is prompted to write a summary report.
 
+Agent process can be found in LLM-researcher.py
+
 ## GNN
 The agent is prompted to use the NetworkX and PyTorchGeometric (PyG) packages.
+
 NetworkX: https://networkx.org/
+
 PyG: https://pytorch-geometric.readthedocs.io/en/latest/
+
 Working example code can be found in GNN.py
 
 ## Flywire data
 The dataset is preloaded for the agent.
 It can be downloaded from: https://codex.flywire.ai/
 Basic code can be found in dataload.py
+
