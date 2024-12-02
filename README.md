@@ -32,13 +32,13 @@ Working human-made baseline code can be found in GNN-human-implemented.py
 ## Flywire data
 The dataset can be downloaded from: https://codex.flywire.ai/
 
-The agent does not have to deal with downloading the dataset or the packages, these are prepared in advance.
+The agent does not have to deal with downloading the dataset or the packages, these are prepared in advance in the environment.
 
 Connectome tools package is required for loading the data: https://github.com/alitwinkumar/connectome_tools
 
 Example code for analyzing the dataset can be found at: https://github.com/alitwinkumar/connectome_examples
 
-## Results
+## Intermediate Results
 Gemini manages to produce working code on the third trial.
 
 The produced code can be found in gemini/LLM-code.txt
