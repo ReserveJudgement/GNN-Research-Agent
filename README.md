@@ -1,6 +1,9 @@
 ## GNN-Research-Agent
 Experiment using an LLM agent as an autonomous research assistant to analyze neurological data in graph format.
-The dataset being analyzed is "flywire", the connectome of an adult female fly, as described in: https://www.biorxiv.org/content/10.1101/2023.06.27.546656v2
+The dataset being analyzed is "flywire", the connectome of an adult female fly, as described in: 
+
+https://www.biorxiv.org/content/10.1101/2023.06.27.546656v2
+
 The task of the agent is to train and evaluate a GNN over part of the connectome using link predicition.
 
 ## Agent
@@ -27,5 +30,7 @@ Working example code can be found in GNN.py
 The dataset can be downloaded from: https://codex.flywire.ai/
 
 The agent does not have to deal with downloading the dataset or the packages, these are prepared in advance.
+
+Connectome tools package is required for loading the data: https://github.com/alitwinkumar/connectome_tools
 
 Example code for analyzing the dataset can be found at: https://github.com/alitwinkumar/connectome_examples
